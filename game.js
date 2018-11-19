@@ -11,6 +11,8 @@ var blockY2=block2.offsetTop;
 var scorePlayer1=0;
 var scorePlayer2=0;
 var score=[scorePlayer1," / ",scorePlayer2];
+var posl=450;
+var post=275;
 
 var keys = [];
 var keyPressed = function(e){
@@ -21,10 +23,9 @@ var keyReleased = function(e){
 };
 
 function play() {
-  var posl=450;
-  var post=275;
+  posl=450;
+  post=275;
   var id = setInterval(frame, 5);
-
   function frame() {
     var ballPositionX = ball.offsetLeft;
     var ballPositionY = ball.offsetTop;
@@ -143,7 +144,18 @@ function movePlayer2Down(){
   }
 }
 
+function  rst(){
+  scorePlayer1=0;
+  scorePlayer2=0;
+  posl=450;
+  post=275;
+}
+
+const start=document.getElementsByClassName("button")[0];
+const reset=document.getElementsByClassName("button")[1];
+
+start.addEventListener("click", play);
+reset.addEventListener("click", rst);
+
 window.addEventListener("keydown", keyPressed);
 window.addEventListener("keyup", keyReleased);
-
-play();
